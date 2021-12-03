@@ -40,7 +40,7 @@ Took 0.2021ms
 | Fil | Beskrivning |
 |:----|------------:|
 |`day<N>/input.txt`|puzzel input|
-|`day<N>/input.test`|test input|
+|`day<N>/test.txt`|test input|
 |`day<N>/get.go`|Samlar ihop del 1 och 2, kopiera från tidigare dag|
 |`day<N>/part1.go`|Del 1 huvudfil|
 |`day<N>/part2.go`|Del 2 huvudfil|
