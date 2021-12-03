@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/grvn/aoc2021/day1"
+	"github.com/grvn/aoc2021/day2"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -17,7 +18,7 @@ func NewCommand() *cobra.Command {
 	result := &cobra.Command{
 		Use:     "aoc2021",
 		Short:   "Advent of Code 2021 Solutions",
-		Example: "go run main.go 1 a -i ./day1/input.txt",
+		Example: "go run main.go 1 1 -i ./day1/input.txt",
 		Args:    cobra.ExactArgs(1),
 		PersistentPreRun: func(_ *cobra.Command, _ []string) {
 			start = time.Now()
@@ -30,6 +31,7 @@ func NewCommand() *cobra.Command {
 	}
 
 	day1.AddCommand(result)
+	day2.AddCommand(result)
 
 	flags := result.PersistentFlags()
 
