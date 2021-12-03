@@ -9,7 +9,7 @@ import (
 
 func Part1() *cobra.Command {
 	return &cobra.Command{
-		Use:   "x",
+		Use:   "1",
 		Short: "Day x, Problem 1",
 		Run: func(_ *cobra.Command, _ []string) {
 			log.WithFields((log.Fields{
