@@ -64,3 +64,19 @@ func (i *Input) GetIntSlice() (input []int) {
 	}
 	return input
 }
+
+func (i *Input) GetLines() <-chan string {
+	return i.lines
+}
+
+// string becomes int or everything crashes
+func AtoIorEXIT(s string) int {
+	intline, err := strconv.Atoi(s)
+	if err != nil {
+		log.WithFields((log.Fields{
+			"Error": err,
+		})).Error("line can not be converted to int")
+		os.Exit(1)
+	}
+	return intline
+}
