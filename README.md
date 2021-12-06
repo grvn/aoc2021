@@ -38,7 +38,7 @@ Took 0.2021ms
 ## Lägga till lösning
 
 | Fil | Beskrivning |
-|:---:|:-----------:|
+|:----|:------------|
 |`day<N>/input.txt`|puzzel input|
 |`day<N>/test.txt`|test input|
 |`day<N>/get.go`|Samlar ihop del 1 och 2, kopiera från tidigare dag|

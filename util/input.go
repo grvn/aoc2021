@@ -51,8 +51,8 @@ func FromFile() *Input {
 	return input
 }
 
-func (i *Input) GetIntSlice() (input []int) {
-	for line := range i.lines {
+func (input *Input) GetIntSlice() (output []int) {
+	for line := range input.GetLines() {
 		intline, err := strconv.Atoi(line)
 		if err != nil {
 			log.WithFields((log.Fields{
@@ -60,23 +60,48 @@ func (i *Input) GetIntSlice() (input []int) {
 			})).Error("line can not be converted to int")
 			os.Exit(1)
 		}
-		input = append(input, intline)
+		output = append(output, intline)
 	}
-	return input
+	return output
 }
 
-func (i *Input) GetLines() <-chan string {
-	return i.lines
+func (input *Input) GetStringSlice() (output []string) {
+	for line := range input.GetLines() {
+		output = append(output, line)
+	}
+	return output
+}
+
+func (input *Input) GetIntMatrix() (output [][]int) {
+	lines := input.GetStringSlice()
+	cols := len(lines[0])
+	rows := len(lines)
+
+	output = make([][]int, rows)
+	for i := range output {
+		output[i] = make([]int, cols)
+	}
+	for i, line := range lines {
+		for j, value := range line {
+			// subract the UTF-8 representation of 0 to get the "actual" number
+			output[i][j] = int(value - '0')
+		}
+	}
+	return output
+}
+
+func (input *Input) GetLines() <-chan string {
+	return input.lines
 }
 
 // string becomes int or everything crashes
 func AtoIorEXIT(s string) int {
-	intline, err := strconv.Atoi(s)
+	output, err := strconv.Atoi(s)
 	if err != nil {
 		log.WithFields((log.Fields{
 			"Error": err,
 		})).Error("line can not be converted to int")
 		os.Exit(1)
 	}
-	return intline
+	return output
 }
