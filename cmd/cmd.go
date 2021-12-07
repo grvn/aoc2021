@@ -9,6 +9,7 @@ import (
 	"github.com/grvn/aoc2021/day4"
 	"github.com/grvn/aoc2021/day5"
 	"github.com/grvn/aoc2021/day6"
+	"github.com/grvn/aoc2021/day7"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
@@ -40,6 +41,7 @@ func NewCommand() *cobra.Command {
 	day4.AddCommand(result)
 	day5.AddCommand(result)
 	day6.AddCommand(result)
+	day7.AddCommand(result)
 
 	flags := result.PersistentFlags()
 
