@@ -14,3 +14,25 @@ func Transpose(input [][]int) (output [][]int) {
 	}
 	return output
 }
+
+func RotateRight(array []int, steps int) []int {
+	length := len(array)
+	if length > 0 {
+		if steps > length {
+			steps = steps % length
+		}
+		array = append(array[length-steps:length], array[0:length-steps]...)
+	}
+	return array
+}
+
+func RotateLeft(array []int, steps int) []int {
+	length := len(array)
+	if length > 0 {
+		if steps > length {
+			steps = steps % length
+		}
+		array = append(array[steps:], array[0:steps]...)
+	}
+	return array
+}
