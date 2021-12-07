@@ -10,19 +10,19 @@ import (
 	"github.com/grvn/aoc2021/util"
 )
 
-func Part2() *cobra.Command {
+func Part1() *cobra.Command {
 	return &cobra.Command{
-		Use:   "2",
-		Short: "Day 4, Problem 2",
+		Use:   "1",
+		Short: "Day 4, Problem 1",
 		Run: func(_ *cobra.Command, _ []string) {
 			log.WithFields((log.Fields{
-				"Answer": execute2(util.FromFile()),
-			})).Info("Day4, Part 2")
+				"Answer": execute1(util.FromFile()),
+			})).Info("Day4, Part 1")
 		},
 	}
 }
 
-func execute2(input *util.Input) int {
+func execute1(input *util.Input) int {
 	in := input.GetStringSlice()
 	firstLine := strings.Split(in[0], ",")
 	drag := make([]int, len(firstLine))
@@ -40,7 +40,7 @@ func execute2(input *util.Input) int {
 	var output result
 	for i := 0; i < len(boards); i++ {
 		tmp := <-results
-		if !output.win || tmp.moves > output.moves {
+		if !output.win || tmp.moves < output.moves {
 			output = tmp
 		}
 	}
