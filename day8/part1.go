@@ -9,14 +9,6 @@ import (
 	"github.com/grvn/aoc2021/util"
 )
 
-const (
-	// antal segment
-	ONE   = 2
-	FOUR  = 4
-	SEVEN = 3
-	EIGHT = 7
-)
-
 var NUMBERS = map[int]bool{
 	ONE:   true,
 	FOUR:  true,
