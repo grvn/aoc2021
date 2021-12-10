@@ -74,7 +74,6 @@ func (board *board) tryToComplete(wg *sync.WaitGroup, drag []int, output chan re
 	output <- result{
 		win: false,
 	}
-	return
 }
 
 func (board *board) calcUnmarked() (output int) {
