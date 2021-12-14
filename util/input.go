@@ -93,15 +93,3 @@ func (input *Input) GetIntMatrix() (output [][]int) {
 func (input *Input) GetLines() <-chan string {
 	return input.lines
 }
-
-// string becomes int or everything crashes
-func AtoIorEXIT(s string) int {
-	output, err := strconv.Atoi(s)
-	if err != nil {
-		log.WithFields((log.Fields{
-			"Error": err,
-		})).Error("line can not be converted to int")
-		os.Exit(1)
-	}
-	return output
-}

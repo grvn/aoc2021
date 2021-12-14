@@ -12,5 +12,5 @@ func Test1(t *testing.T) {
 	viper.Set("input", "test.txt")
 	input := util.FromFile()
 	result := execute1(input)
-	require.Equal(t, 0, result)
+	require.Equal(t, 15, result)
 }

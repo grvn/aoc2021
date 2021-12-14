@@ -8,6 +8,8 @@ I år så blir det att testa Go (https://go.dev/)
 Jag har tidigare stött på något som kallas för [cobra](github.com/spf13/cobra) som ser ut att vara väldigt användbart här för att förenkla upprepning av kod.
 Jag kommer samtidigt ta tillfället i akt och testa GitHub actions.
 
+Dag 4 och dag överkomplicerade jag då jag ville testa på trådning med [goroutines](https://go.dev/tour/concurrency/1).
+
 [Advent of Code 2021](http://adventofcode.com/2021)
 
 

@@ -20,5 +20,43 @@ func Part1() *cobra.Command {
 }
 
 func execute1(input *util.Input) int {
-	return 0
+	lines := input.GetStringSlice()
+	points := make(map[int]map[int]int)
+	for i := 0; i < len(lines); i++ {
+		points[i] = map[int]int{}
+	}
+
+	for x, line := range lines {
+		for y, value := range line {
+			points[x][y] = util.AtoIorEXIT(string(value))
+		}
+	}
+
+	width := len(points[0])
+	height := len(points)
+	risk := 0
+
+	for x := 0; x < height; x++ {
+		for y := 0; y < width; y++ {
+			up, okup := points[x][y-1]
+			down, okdown := points[x][y+1]
+			left, okleft := points[x-1][y]
+			right, okright := points[x+1][y]
+			point := points[x][y]
+			if okup && point >= up {
+				continue
+			}
+			if okdown && point >= down {
+				continue
+			}
+			if okleft && point >= left {
+				continue
+			}
+			if okright && point >= right {
+				continue
+			}
+			risk += point + 1
+		}
+	}
+	return risk
 }
