@@ -20,5 +20,63 @@ func Part2() *cobra.Command {
 }
 
 func execute2(input *util.Input) int {
-	return 0
+	i := 0
+	lines := input.GetStringSlice()
+	octopuses := make(map[point]int)
+	for x, line := range lines {
+		for y, value := range line {
+			octopuses[point{x: x, y: y}] = int(value - '0')
+		}
+	}
+	for ; ; i++ {
+		// Step 1
+		for octopus := range octopuses {
+			octopuses[octopus]++
+		}
+
+		// Step 2
+		flashqueue := util.NewQueue()
+		flashed := make(map[point]bool)
+		for octopus := range octopuses {
+			if octopuses[octopus] > 9 {
+				flashed[octopus] = true
+				for _, neighoctopus := range getNeighbours(octopuses, octopus) {
+					octopuses[neighoctopus]++
+					if octopuses[neighoctopus] > 9 {
+						if _, ok := flashed[neighoctopus]; !ok {
+							flashqueue.Push(neighoctopus)
+						}
+					}
+				}
+			}
+		}
+		for flashqueue.Length() > 0 {
+			octo, _ := flashqueue.Pop()
+			octopus := octo.(point)
+			_, ok := flashed[octopus]
+			if octopuses[octopus] > 9 && !ok {
+				flashed[octopus] = true
+				for _, octo := range getNeighbours(octopuses, octopus) {
+					octopuses[octo]++
+					if octopuses[octo] > 9 {
+						if _, ok := flashed[octo]; !ok {
+							flashqueue.Push(octo)
+						}
+					}
+				}
+			}
+		}
+
+		// Step 3
+		for octopus := range flashed {
+			octopuses[octopus] = 0
+		}
+
+		// check done
+		if len(flashed) == len(octopuses) {
+			break
+		}
+	}
+
+	return i + 1
 }
