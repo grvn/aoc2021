@@ -1,7 +1,5 @@
 package day11
 
-import "fmt"
-
 func getNeighbours(points map[point]int, p point) (neighbours []point) {
 	var neighbourpoints = []struct {
 		x, y int
@@ -24,17 +22,17 @@ func getNeighbours(points map[point]int, p point) (neighbours []point) {
 	return neighbours
 }
 
-func printGrid(m map[point]int) {
-	for x := 0; x < 10; x++ {
-		for y := 0; y < 10; y++ {
-			v, ok := m[point{x: x, y: y}]
-			if ok {
-				fmt.Print(v)
-			} else {
-				fmt.Print(".")
-			}
-		}
-		fmt.Printf("\n")
-	}
-	fmt.Printf("\n\n")
-}
+// func printGrid(m map[point]int) {
+// 	for x := 0; x < 10; x++ {
+// 		for y := 0; y < 10; y++ {
+// 			v, ok := m[point{x: x, y: y}]
+// 			if ok {
+// 				fmt.Print(v)
+// 			} else {
+// 				fmt.Print(".")
+// 			}
+// 		}
+// 		fmt.Printf("\n")
+// 	}
+// 	fmt.Printf("\n\n")
+// }
