@@ -7,20 +7,12 @@ import (
 	"github.com/grvn/aoc2021/util"
 )
 
-var (
-	closes = map[rune]rune{
-		'(': ')',
-		'[': ']',
-		'{': '}',
-		'<': '>',
-	}
-	points = map[rune]int{
-		')': 3,
-		']': 57,
-		'}': 1197,
-		'>': 25137,
-	}
-)
+var points = map[rune]int{
+	')': 3,
+	']': 57,
+	'}': 1197,
+	'>': 25137,
+}
 
 func Part1() *cobra.Command {
 	return &cobra.Command{
