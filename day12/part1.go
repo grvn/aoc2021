@@ -1,6 +1,8 @@
 package day12
 
 import (
+	"strings"
+
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
@@ -20,5 +22,14 @@ func Part1() *cobra.Command {
 }
 
 func execute1(input *util.Input) int {
+	nodes := map[string][]string{}
+
+	for line := range input.GetLines() {
+		parts := strings.Split(line, "-")
+
+		nodes[parts[0]] = append(nodes[parts[0]], parts[1])
+		nodes[parts[1]] = append(nodes[parts[1]], parts[0])
+	}
+
 	return 0
 }
